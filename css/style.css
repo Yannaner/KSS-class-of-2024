@@ -11,9 +11,10 @@ html, body {
     padding: 0;
     
 }
+
 .message
 {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Dancing Script', cursive;
     color: white;
     position: absolute;
     font-size: 95px;
