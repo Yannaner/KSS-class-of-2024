@@ -1,0 +1,273 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    
+}
+.message
+{
+    font-family: 'Great Vibes', cursive;
+    color: white;
+    position: absolute;
+    font-size: 95px;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height:200px;
+    z-index: 50;
+    margin: auto auto;
+    line-height: 200px;
+    text-align: center;
+    display: none;
+}
+canvas {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: absolute;
+}
+
+#confetti
+{  
+    display: none;
+}
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+    from {background-position: 0;}
+    to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.stars {
+    background:#000 url(../img/all.png) repeat top center;
+    z-index:0;
+}
+
+/* .twinkling{
+    background:transparent url(../img/twinkling.png) repeat top center;
+    z-index:1;
+
+    -moz-animation:move-twink-back 200s linear infinite;
+    -ms-animation:move-twink-back 200s linear infinite;
+    -o-animation:move-twink-back 200s linear infinite;
+    -webkit-animation:move-twink-back 200s linear infinite;
+    animation:move-twink-back 200s linear infinite;
+} */
+
+/* .clouds{
+    background:transparent url(../img/clouds3.png) repeat top center;
+    z-index:3;
+
+    -moz-animation:move-clouds-back 200s linear infinite;
+    -ms-animation:move-clouds-back 200s linear infinite;
+    -o-animation:move-clouds-back 200s linear infinite;
+    -webkit-animation:move-clouds-back 200s linear infinite;
+    animation:move-clouds-back 200s linear infinite;
+} */
+.flying-message-container {
+    position: fixed;
+    top: 15%; /* Adjust to move the message higher */
+    left: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increase gap between image and text */
+    animation: fly-in-out 10s linear;
+    z-index: 100;
+}
+
+.flying-image {
+    width: 200px; /* 5x original size (adjust as needed) */
+    height: 250px;
+    border-radius: 20%; /* Rounded edges for style */
+    border: 3px solid white; /* Add a white border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+.flying-text {
+    font-family: 'Noto Sans TC', sans-serif; /* Ensure Chinese font support */
+    font-size: 36px; /* Larger text for better visibility */
+    font-weight: bold;
+    color: #ffcc00; /* Gold-like color for style */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+@keyframes fly-in-out {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        left: 50%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: -100%;
+        opacity: 0;
+    }
+}
+
+.command-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 100;
+    font-family: 'Great Vibes', cursive; /* Matches the theme font */
+}
+
+.command-input {
+    width: 350px;
+    padding: 10px;
+    font-size: 18px;
+    color: #222;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffcc00; /* Golden border */
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.command-input:focus {
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); /* Glowing effect */
+}
+
+.command-button {
+    padding: 12px 25px;
+    font-size: 18px;
+    font-family: 'Great Vibes', cursive;
+    color: white;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient button */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.command-button:hover {
+    transform: scale(1.05); /* Slightly enlarges on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.command-button:active {
+    transform: scale(0.95); /* Shrinks slightly on click */
+}
+
+.deehan-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row; /* Align image and text side by side */
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    z-index: 200;
+    animation: fade-in-out 5s ease-in-out;
+    max-width: 600px;
+}
+
+
+/* Deehan block */
+.deehan-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); 
+}
+
+.deehan-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9); 
+    text-align: left;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); 
+    max-width: 350px;
+    line-height: 1.5;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+}
